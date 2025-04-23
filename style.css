@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Barriecito&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  align-content: center;
+  font-family: Poppins, sans-serif;
+}
+.game-container {
+  width: 650px;
+  height: 800px;
+  margin: 0 auto;
+  padding: 32px;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.grid-container {
+  width: 400px;
+  height: 400px;
+  border: 1px solid;
+}
+.controls-container {
+  width: 90%;
+  margin-top: 104px;
+  display: flex;
+  justify-content: space-between;
+}
+.knob {
+  width: 75px;
+  height: 75px;
+  background-color: red;
+}
+button {
+  font-family: Poppins, sans-serif;
+}
