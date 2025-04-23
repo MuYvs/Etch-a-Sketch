@@ -34,3 +34,36 @@ function addGridSquares(e) {
 
 grid_slider.addEventListener("input", showGridSize);
 grid_slider.addEventListener("input", addGridSquares);
+
+let shouldDraw = false;
+function draw(e) {
+  let target_box = e.target;
+  target_box.style.backgroundColor = "black";
+}
+
+function erase(e) {
+  let target_box = e.target;
+  target_box.style.backgroundColor = "transparent";
+}
+
+document.addEventListener("mousedown", () => {
+  shouldDraw = true;
+});
+
+document.addEventListener("mouseup", () => {
+  shouldDraw = false;
+});
+
+grid_container.addEventListener("mousedown", (e) => {
+  draw(e);
+});
+
+grid_container.addEventListener("dragstart", (e) => {
+  e.preventDefault();
+});
+
+grid_container.addEventListener("mouseover", (e) => {
+  if (shouldDraw) {
+    draw(e);
+  }
+});
