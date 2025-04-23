@@ -65,6 +65,10 @@ game_container.addEventListener("dragstart", (e) => {
   e.preventDefault();
 });
 
+game_container.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+
 grid_container.addEventListener("mousedown", (e) => {
   if (e.button === 0) {
     draw(e);
