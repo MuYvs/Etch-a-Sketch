@@ -4,6 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Etch a Sketch</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div class="game-container">
+      <h1>Etch A Sketch</h1>
+      <div class="grid-container"></div>
+      <div class="controls-container">
+        <div id="h-knob"></div>
+        <div class="buttons-container">
+          <button id="btn-draw">Draw</button>
+          <button id="btn-erase">Erase</button>
+          <button id="btn-next">Next</button>
+          <button id="btn-reverse">Reverse</button>
+          <input type="range" name="" id="grid-slider" min="0" max="50" />
+        </div>
+        <div id="v-knob"></div>
+      </div>
+    </div>
+  </body>
 </html>
