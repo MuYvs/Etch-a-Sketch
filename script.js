@@ -3,8 +3,10 @@ let grid_slider = document.querySelector("#grid-slider");
 let grid_size_text = document.querySelector(".grid-size-text");
 let game_container = document.querySelector(".game-container");
 let buttons_container = document.querySelector(".buttons-container");
-const undoButton = document.getElementById("btn-reverse");
-const redoButton = document.getElementById("btn-next");
+const undo_button = document.querySelector("#btn-reverse");
+const redo_button = document.querySelector("#btn-next");
+const draw_button = document.querySelector("#btn-draw");
+const erase_button = document.querySelector("#btn-erase");
 
 //Boxes
 function showGridSize(e) {
@@ -26,8 +28,8 @@ function initialSquares(n) {
 initialSquares(16);
 
 function addGridSquares(e) {
-  undoButton.disabled = true;
-  redoButton.disabled = true;
+  undo_button.disabled = true;
+  redo_button.disabled = true;
   grid_container.innerHTML = "";
   let grid_size = e.target.value;
   let resolution = grid_size * grid_size;
@@ -45,6 +47,7 @@ grid_slider.addEventListener("input", addGridSquares);
 //Drawing
 let shouldDraw = false;
 let shouldErase = false;
+let draw_color = "black";
 
 function draw(e, color) {
   let target_box = e.target;
@@ -63,7 +66,7 @@ grid_container.addEventListener("mousedown", (e) => {
   if (e.button === 0) {
     shouldDraw = true;
     currentStroke = [];
-    draw(e, "black");
+    draw(e, draw_color);
   } else if (e.button === 2) {
     shouldErase = true;
     currentStroke = [];
@@ -85,7 +88,7 @@ document.addEventListener("mouseup", () => {
 
 grid_container.addEventListener("mouseover", (e) => {
   if (shouldDraw) {
-    draw(e, "black");
+    draw(e, draw_color);
   } else if (shouldErase) {
     draw(e, "transparent");
   }
@@ -138,6 +141,16 @@ buttons_container.addEventListener("click", (e) => {
     case "btn-reverse":
       undo();
       return;
+    case "btn-draw":
+      draw_color = "black";
+      draw_button.disabled = true;
+      erase_button.disabled = false;
+      return;
+    case "btn-erase":
+      draw_color = "transparent";
+      erase_button.disabled = true;
+      draw_button.disabled = false;
+      return;
   }
 });
 
@@ -155,8 +168,8 @@ grid_container.addEventListener("dragstart", (e) => {
 });
 
 function updateReverseNextButtons() {
-  undoButton.disabled = historyStack.length === 0;
-  redoButton.disabled = redoStack.length === 0;
+  undo_button.disabled = historyStack.length === 0;
+  redo_button.disabled = redoStack.length === 0;
 }
 
 updateReverseNextButtons();
