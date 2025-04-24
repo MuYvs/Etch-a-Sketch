@@ -51,6 +51,7 @@ function draw(e, color) {
     target_box.style.backgroundColor = `${color}`;
     currentStroke.push({ target_box, prev_color, new_color });
     hasDrawn = true;
+    button_reverse.disabled = false;
   }
 }
 
@@ -70,6 +71,7 @@ document.addEventListener("mouseup", () => {
   if ((shouldDraw || shouldErase) && hasDrawn) {
     historyStack.push([...currentStroke]);
     redoStack.length = 0;
+    updateReverseNextButtons();
   }
   shouldDraw = false;
   shouldErase = false;
@@ -99,6 +101,7 @@ function undo() {
     target_box.style.backgroundColor = prev_color;
   });
   redoStack.push(lastStroke);
+  updateReverseNextButtons();
 }
 
 function redo() {
@@ -109,6 +112,7 @@ function redo() {
     target_box.style.backgroundColor = new_color;
   });
   historyStack.push(stroke);
+  updateReverseNextButtons();
 }
 
 document.addEventListener("keydown", (e) => {
@@ -118,6 +122,21 @@ document.addEventListener("keydown", (e) => {
     redo();
   }
 });
+
+//buttons
+buttons_container.addEventListener("click", (e) => {
+  let target_button = e.target;
+
+  switch (target_button.id) {
+    case "btn-next":
+      redo();
+      return;
+    case "btn-reverse":
+      undo();
+      return;
+  }
+});
+
 // better ux
 game_container.addEventListener("dragstart", (e) => {
   e.preventDefault();
@@ -131,15 +150,12 @@ grid_container.addEventListener("dragstart", (e) => {
   e.preventDefault();
 });
 
-buttons_container.addEventListener("click", (e) => {
-  let target_button = e.target;
+function updateReverseNextButtons() {
+  const undoButton = document.getElementById("btn-reverse");
+  const redoButton = document.getElementById("btn-next");
 
-  switch (target_button.id) {
-    case "btn-next":
-      redo();
-      return;
-    case "btn-reverse":
-      undo();
-      return;
-  }
-});
+  undoButton.disabled = historyStack.length === 0;
+  redoButton.disabled = redoStack.length === 0;
+}
+
+updateReverseNextButtons();
