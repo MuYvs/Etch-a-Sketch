@@ -30,16 +30,38 @@ body {
   border: 1px solid;
 }
 .controls-container {
-  width: 90%;
+  width: 100%;
   margin-top: 104px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
 }
-.knob {
-  width: 75px;
-  height: 75px;
-  background-color: red;
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
 }
 button {
   font-family: Poppins, sans-serif;
+  width: 120px;
+}
+.btns {
+  display: flex;
+  justify-content: center;
+}
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+  gap: 24px;
+}
+.grid-size-container {
+  display: flex;
+  flex-direction: column;
+}
+.grid-size-text {
+  text-align: center;
 }
