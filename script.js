@@ -3,6 +3,8 @@ let grid_slider = document.querySelector("#grid-slider");
 let grid_size_text = document.querySelector(".grid-size-text");
 let game_container = document.querySelector(".game-container");
 let buttons_container = document.querySelector(".buttons-container");
+const undoButton = document.getElementById("btn-reverse");
+const redoButton = document.getElementById("btn-next");
 
 //Boxes
 function showGridSize(e) {
@@ -24,6 +26,8 @@ function initialSquares(n) {
 initialSquares(16);
 
 function addGridSquares(e) {
+  undoButton.disabled = true;
+  redoButton.disabled = true;
   grid_container.innerHTML = "";
   let grid_size = e.target.value;
   let resolution = grid_size * grid_size;
@@ -151,9 +155,6 @@ grid_container.addEventListener("dragstart", (e) => {
 });
 
 function updateReverseNextButtons() {
-  const undoButton = document.getElementById("btn-reverse");
-  const redoButton = document.getElementById("btn-next");
-
   undoButton.disabled = historyStack.length === 0;
   redoButton.disabled = redoStack.length === 0;
 }
