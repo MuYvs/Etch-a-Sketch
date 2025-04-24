@@ -19,6 +19,7 @@ function initialSquares(n) {
   for (i = 0; i < resolution; i++) {
     let grid_square = document.createElement("div");
     grid_square.classList.add("grid-square");
+    grid_square.style.backgroundColor = "transparent";
     grid_container.appendChild(grid_square);
   }
   grid_container.style.cssText = `grid-template-columns: repeat(${n}, 1fr);`;
@@ -35,6 +36,7 @@ function addGridSquares(e) {
   let resolution = grid_size * grid_size;
   for (i = 0; i < resolution; i++) {
     let grid_square = document.createElement("div");
+    grid_square.style.backgroundColor = "transparent";
     grid_square.classList.add("grid-square");
     grid_container.appendChild(grid_square);
   }
@@ -59,6 +61,8 @@ function draw(e, color) {
     currentStroke.push({ target_box, prev_color, new_color });
     hasDrawn = true;
     button_reverse.disabled = false;
+  } else if (prev_color == new_color) {
+    return;
   }
 }
 
