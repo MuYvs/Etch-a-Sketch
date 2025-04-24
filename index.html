@@ -12,23 +12,25 @@
       <h1>Etch A Sketch</h1>
       <div class="grid-container"></div>
       <div class="controls-container">
-        <div class="knob" id="h-knob">Knob</div>
         <div class="buttons-container">
-          <button class="button" id="btn-draw">Draw</button>
-          <button class="button" id="btn-erase">Erase</button>
-          <button class="button" id="btn-next">Next</button>
-          <button class="button" id="btn-reverse">Reverse</button>
-          <input
-            type="range"
-            name=""
-            id="grid-slider"
-            min="1"
-            max="50"
-            value="16"
-          />
-          <div class="grid-size-text">Grid Size: 1 x 1</div>
+          <div class="btns">
+            <button class="button" id="btn-draw" disabled>Draw</button>
+            <button class="button" id="btn-erase">Erase</button>
+            <button class="button" id="btn-next">Next</button>
+            <button class="button" id="btn-reverse">Reverse</button>
+          </div>
+          <div class="grid-size-container">
+            <input
+              type="range"
+              name=""
+              id="grid-slider"
+              min="1"
+              max="50"
+              value="16"
+            />
+            <div class="grid-size-text">Grid Size: 1 x 1</div>
+          </div>
         </div>
-        <div class="knob" id="v-knob">Knob</div>
       </div>
     </div>
   </body>
