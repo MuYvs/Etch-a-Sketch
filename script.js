@@ -29,6 +29,9 @@ function initialSquares(n) {
 initialSquares(16);
 
 function addGridSquares(e) {
+  currentStroke = [];
+  historyStack = [];
+  redoStack = [];
   undo_button.disabled = true;
   redo_button.disabled = true;
   grid_container.innerHTML = "";
